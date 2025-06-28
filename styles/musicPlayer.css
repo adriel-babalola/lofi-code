@@ -1,0 +1,378 @@
+@import url(main.css);
+
+:root {
+  --primary: #ce5c5c;
+  --primary-light: #febf9b;
+  --text: #ededed;
+  --text-light: #f5afa5;
+  --bg: rgba(255, 255, 255, 0.2);
+  --bg-hover: rgba(255, 255, 255, 0.3);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-position: center;
+  background-image: url(../assets/wallpaper.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  font-family: ComicNueu;
+  color: white;
+  z-index: 0;
+
+}
+
+
+/* Dark overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+#body {
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 30px;
+}
+
+.player-card,
+.playlist-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: var(--transition);
+
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.player-header h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-open {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ComicNueu;
+  transition: var(--transition);
+}
+
+.btn-open:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.now-playing {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.album-art {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+}
+
+.album-art i {
+  font-size: 4rem;
+  color: white;
+  z-index: 2;
+}
+
+.vinyl {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="70" fill="none" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="50" fill="none" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="30" fill="none" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="10" fill="white"/></svg>') center/cover;
+  border-radius: 50%;
+  transition: transform 2s linear;
+}
+
+.now-playing h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.progress-bar div {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.control-btn:hover {
+  background: var(--bg-hover);
+  transform: scale(1.1);
+}
+
+.play-pause {
+  background: var(--primary);
+  color: white;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+.play-pause:hover {
+  background: var(--primary-light);
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.volume-control i {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.volume-control input[type="range"] {
+  flex: 1;
+  height: 5px;
+  -webkit-appearance: none;
+  background: #e0e0e0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.playlist-card {
+  height: 100%;
+}
+
+.playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.playlist-header h3 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.track-count {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  background: var(--bg);
+  padding: 5px 10px;
+  border-radius: 50px;
+}
+
+.playlist {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.playlist::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+.playlist div {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playlist div:hover {
+  background: var(--bg-hover);
+}
+
+.playlist div i {
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.playlist .active {
+  background: rgba(108, 92, 231, 0.1);
+  border-left: 4px solid var(--primary);
+  font-weight: 500;
+}
+
+.empty-playlist {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-light);
+}
+
+.empty-playlist i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: var(--primary-light);
+}
+
+.empty-playlist p {
+  margin-bottom: 20px;
+}
+
+/* Animation for playing state */
+.playing .vinyl {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .player-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-card,
+  .playlist-card {
+    width: 100%;
+  }
+}

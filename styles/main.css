@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('../fonts/Lobster-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ComicNueu';
+  src: url('../fonts/ComicNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../fonts/Quicksand-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #1b3c42;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.nav {
+  padding: 0.5rem 1.5rem;
+  color: white;
+  font-family: ComicNueu, cursive;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid slategrey;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-around;
+  gap: 2.5rem;
+  cursor: pointer;
+}
+
+.nav ul li {
+  list-style: none;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.nav ul li i {
+  margin-right: 1rem;
+}
+
+.nav ul li:hover {
+  transform: scale(1.02);
+  color: #febf9b;
+}
+
+.nav .logo {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav .logo .logo-txt {
+  font-size: 2rem;
+  font-family: lobster;
+  cursor: pointer;
+}

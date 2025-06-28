@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lofi Code | Audio Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="styles/musicPlayer.css">
+</head>
+
+<body>
+
+
+  <div class="nav">
+    <div class="logo">
+      <img src="assets/logo111.png" height="50px" width="50px" alt="" srcset="">
+      <div class="logo-txt">Lofi Code</div>
+    </div>
+    <div class="links">
+      <ul>
+
+        <li> <a href="index.html"><i class="fas fa-sign-out-alt"></i>Log Out </a></li>
+
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="body" id="body">
+
+    <div class="background"></div>
+
+    <div class="container">
+      <div class="player-grid">
+        <!-- Left: Player -->
+        <div class="player-card">
+          <div class="player-header">
+            <h2><i class="fas fa-music"></i> Music Player</h2>
+            <button id="openFile" class="btn-open">
+              <i class="fas fa-folder-open"></i> Open Files
+            </button>
+          </div>
+
+          <div class="now-playing">
+            <div class="album-art">
+              <i class="fas fa-music-note"></i>
+              <div class="vinyl"></div>
+            </div>
+            <h3 id="nowPlaying">No track selected</h3>
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar"></div>
+              <div class="time-info">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <audio id="player"></audio>
+
+          <div class="controls">
+            <button id="shuffle" class="control-btn" title="Shuffle">
+              <i class="fas fa-random"></i>
+            </button>
+            <button id="prev" class="control-btn" title="Previous">
+              <i class="fas fa-step-backward"></i>
+            </button>
+            <button id="playPause" class="control-btn play-pause" title="Play/Pause">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="next" class="control-btn" title="Next">
+              <i class="fas fa-step-forward"></i>
+            </button>
+            <button id="repeat" class="control-btn" title="Repeat">
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+
+          <div class="volume-control">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.7">
+            <i class="fas fa-volume-up"></i>
+          </div>
+        </div>
+
+        <!-- Right: Playlist -->
+        <div class="playlist-card">
+          <div class="playlist-header">
+            <h3><i class="fas fa-list"></i> Playlist</h3>
+            <div class="track-count" id="trackCount">0 tracks</div>
+          </div>
+
+          <div class="playlist" id="audioList">
+            <div class="empty-playlist">
+              <i class="fas fa-music"></i>
+              <p>No tracks loaded</p>
+              <button id="openFileAlt" class="btn-open">
+                <i class="fas fa-folder-open"></i> Open Audio Files
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/app.js"></script>
+
+
+</body>
+
+</html>

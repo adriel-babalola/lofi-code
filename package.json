@@ -1,0 +1,17 @@
+{
+  "name": "lofi-code",
+  "version": "1.0.0",
+  "description": "| Color       | Hex       | Description         |\r | ----------- | --------- | ------------------- |\r | Bright Pink | `#FF00C8` | Music note color    |\r | Cyan Blue   | `#00FFFF` | Outer circular ring |\r | Black       | `#000000` | Background          |",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "electron": "^37.1.0",
+    "gsap": "^3.13.0"
+  }
+}
